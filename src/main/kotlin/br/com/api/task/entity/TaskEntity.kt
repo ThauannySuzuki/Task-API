@@ -2,16 +2,15 @@ package br.com.api.task.entity
 
 import br.com.api.task.enums.StatusEnum
 import jakarta.persistence.*
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "task")
+@Table(name = "tasks")
 data class TaskEntity (
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
+    val id: Int? = null,
 
     @Column(name = "titulo")
     val titulo: String,
@@ -23,9 +22,9 @@ data class TaskEntity (
     val status: StatusEnum,
 
     @Column(name = "criado_em")
-    val criadoEm: LocalDateTime = LocalDateTime.now(),
+    val criadoEm: LocalDateTime,
 
     @Column(name = "atualizado_em")
-    val atualizadoEm: LocalDateTime = LocalDateTime.now()
+    val atualizadoEm: LocalDateTime? = LocalDateTime.now()
 
 )
